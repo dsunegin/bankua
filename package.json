@@ -19,8 +19,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
-    "iconv-lite": "^0.5.1",
-    "mysql2": "^2.1.0",
-    "puppeteer": "^2.1.1"
+    "mysql2": "^2.1.0"
   }
 }
