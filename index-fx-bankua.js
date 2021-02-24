@@ -6,6 +6,7 @@ if (envconf.error) {   throw envconf.error};        // ERROR if Config .env file
 
 const connectionFinance = mysql.createConnection({
     host: process.env.DB_FINHOST,
+    port: process.env.DB_FINPORT,
     user: process.env.DB_FINUSER,
     database: process.env.DB_FINDATABASE,
     password:  process.env.DB_FINPASSWORD
