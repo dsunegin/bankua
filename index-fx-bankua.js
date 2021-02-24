@@ -28,9 +28,8 @@ let end = new Date();       // Now
         //const dbDate = fxyear + '-' + fxmonth + '-' + fxdate;
         await axios.get(fxUrl,{ headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' }, timeout: 30000  })
         .then(response => {
-            let jsonResponse = response.data;
-                //console.log(jsonResponse);
-            for (let i = 0, item; item = jsonResponse[i]; ++i) {
+            let ResponseArr = response.data;
+            for (let i = 0, item; item = ResponseArr[i]; ++i) {
                 (async () => {
                     let fxcode = 'UAH' + item.cc;
 
@@ -65,7 +64,7 @@ let end = new Date();       // Now
             if (error.response.status == 404) page = false;
                 })
         console.log(dbDate);
-        await wait(500);
+        await wait(500);            // Next Request Timeout in Loop of Historic Rates dataset
 
         newDate = start.setDate(start.getDate() + 1);
         start = new Date(newDate);
