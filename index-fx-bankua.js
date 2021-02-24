@@ -23,7 +23,8 @@ let end = new Date();       // Now
         let urlParam = process.env.TODAY ? '' : '&date=' + fxyear + fxmonth + fxdate;
 
         let fxUrl =  'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json' + urlParam;
-        const dbDate = fxyear + '-' + fxmonth + '-' + fxdate;
+        let dbDate;
+        //const dbDate = fxyear + '-' + fxmonth + '-' + fxdate;
         await axios.get(fxUrl,{ headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' }  })
         .then(response => {
             let jsonResponse = response.data;
@@ -31,10 +32,26 @@ let end = new Date();       // Now
             for (let i = 0, item; item = jsonResponse[i]; ++i) {
                 (async () => {
                     let fxcode = 'UAH' + item.cc;
-                    const sql = "INSERT INTO bankua (code, exchangedate, rate ) VALUES (?,?,?)";
-                    const fxitem = [fxcode, dbDate, item.rate];
-                    await connectionFinance.query(sql, fxitem)
+
+                    const regexDate = /(\d+)\.(\d+)\.(\d+)/;
+                    let extrDate = regexDate.exec(item.exchangedate);
+                    let YYYY, DD, MM;
+                    if (extrDate !== null) {
+                        YYYY = extrDate[3];
+                        MM = extrDate[2];
+                        DD = extrDate[1];
+
+                    };
+
+                    dbDate = YYYY + '-' + MM + '-' + DD;
+                    const sql ="SELECT * FROM bankua WHERE exchangedate='"+dbDate+"' AND code = '"+fxcode+ "'";
+
+                    await connectionFinance.query(sql)
                     .then(result => {
+                        if (result[0].length > 0) return;
+                        const sql =" INSERT INTO bankua (code, exchangedate, rate ) VALUES (?,?,?)"
+                        const fxitem = [fxcode, dbDate, item.rate];
+                        let res = connectionFinance.query(sql, fxitem);
                         //console.log(result[0]);
                     })
                     .catch(err => {   console.log(err);    })
