@@ -13,7 +13,7 @@ const connectionFinance = mysql.createConnection({
 }).promise();
 
 
-let start = process.env.TODAY ? new Date() : new Date(2020,0,1);
+let start = (process.env.TODAY=='true') ? new Date() : new Date(2020,0,1);
 let end = new Date();       // Now
 
 (async () => {
@@ -21,7 +21,7 @@ let end = new Date();       // Now
         let fxyear= start.getFullYear();
         let fxmonth = (start.getMonth()+1).toString().padStart(2, "0");
         let fxdate =start.getDate().toString().padStart(2, "0");
-        let urlParam = process.env.TODAY ? '' : '&date=' + fxyear + fxmonth + fxdate;
+        let urlParam = (process.env.TODAY=='true') ? '' : '&date=' + fxyear + fxmonth + fxdate;
 
         let fxUrl =  'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json' + urlParam;
         let dbDate;
@@ -31,7 +31,7 @@ let end = new Date();       // Now
             let ResponseArr = response.data;
             for (let i = 0, item; item = ResponseArr[i]; ++i) {
                 (async () => {
-                    let fxcode = 'UAH' + item.cc;
+                    let fxcode = 'UAH/' + item.cc;
 
                     const regexDate = /(\d+)\.(\d+)\.(\d+)/;
                     let extrDate = regexDate.exec(item.exchangedate);
@@ -64,7 +64,7 @@ let end = new Date();       // Now
             if (error.response.status == 404) page = false;
                 })
         console.log(dbDate);
-        await wait(500);            // Next Request Timeout in Loop of Historic Rates dataset
+        await wait(3000);            // Next Request Timeout in Loop of Historic Rates dataset
 
         newDate = start.setDate(start.getDate() + 1);
         start = new Date(newDate);

@@ -7,7 +7,7 @@ use finance;
 
 CREATE TABLE bankua (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-code VARCHAR(6) NOT NULL,
+code VARCHAR(7) NOT NULL,
 exchangedate DATE NOT NULL,
 rate float UNSIGNED
 );
