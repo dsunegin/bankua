@@ -68,7 +68,8 @@ node index-fx-bankua.js
 ```bash
 ./pm2-bankua.sh
 ```
-By default, cron runs every 6 hours. You can adjust it in  `pm2-bankua.sh` file. 
+By default, cron runs every 6 hours. You can adjust it in  `pm2-bankua.sh` file.
+ 
 **Notice:** You must have installed pm2 process manager to run pm2-bankua.sh script. 
 
 ## Contact
