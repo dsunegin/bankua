@@ -1,11 +1,11 @@
-CREATE DATABASE finance CHARACTER SET utf8 COLLATE utf8_general_ci;
+/*CREATE DATABASE finance CHARACTER SET utf8 COLLATE utf8_general_ci;
 create user finance_user@localhost;
 set password for finance_user@localhost=password('psw_finance_user');
-grant all on finance.* to finance_user@localhost with grant option;
+grant all on finance.* to finance_user@localhost with grant option;*/
 
 use finance;
 
-CREATE TABLE bankua (
+/*CREATE TABLE bankua (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 code VARCHAR(7) NOT NULL,
 exchangedate DATE NOT NULL,
@@ -13,11 +13,268 @@ rate float UNSIGNED
 );
 
 # ISO 4217 Currency Codes for different languages e.g, USD = United States dollar
+*/
 
-CREATE TABLE names (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-code VARCHAR(3) NOT NULL,
-lang VARCHAR(2) NOT NULL,
-txt VARCHAR(255) NOT NULL
+CREATE TABLE currency(
+id       INTEGER  NOT NULL PRIMARY KEY,
+country  VARCHAR(36) NOT NULL,
+currency VARCHAR(39) NOT NULL,
+code     VARCHAR(3) NOT NULL,
+lang VARCHAR(2) NOT NULL
 );
+
+INSERT INTO currency(id,country,currency,code,lang) VALUES (1,'Afghanistan','Afghan afghani','AFN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (2,'Akrotiri and Dhekelia (UK)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (3,'Aland Islands (Finland)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (4,'Albania','Albanian lek','ALL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (5,'Algeria','Algerian dinar','DZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (6,'American Samoa (USA)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (7,'Andorra','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (8,'Angola','Angolan kwanza','AOA','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (9,'Anguilla (UK)','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (10,'Antigua and Barbuda','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (11,'Argentina','Argentine peso','ARS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (12,'Armenia','Armenian dram','AMD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (13,'Aruba (Netherlands)','Aruban florin','AWG','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (14,'Ascension Island (UK)','Saint Helena pound','SHP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (15,'Australia','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (16,'Austria','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (17,'Azerbaijan','Azerbaijan manat','AZN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (18,'Bahamas','Bahamian dollar','BSD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (19,'Bahrain','Bahraini dinar','BHD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (20,'Bangladesh','Bangladeshi taka','BDT','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (21,'Barbados','Barbadian dollar','BBD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (22,'Belarus','Belarusian ruble','BYN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (23,'Belgium','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (24,'Belize','Belize dollar','BZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (25,'Benin','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (26,'Bermuda (UK)','Bermudian dollar','BMD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (27,'Bhutan','Bhutanese ngultrum','BTN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (28,'Bolivia','Bolivian boliviano','BOB','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (29,'Bonaire (Netherlands)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (30,'Bosnia and Herzegovina','Bosnia and Herzegovina convertible mark','BAM','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (31,'Botswana','Botswana pula','BWP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (32,'Brazil','Brazilian real','BRL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (33,'British Indian Ocean Territory (UK)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (34,'British Virgin Islands (UK)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (35,'Brunei','Brunei dollar','BND','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (36,'Bulgaria','Bulgarian lev','BGN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (37,'Burkina Faso','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (38,'Burundi','Burundi franc','BIF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (39,'Cabo Verde','Cape Verdean escudo','CVE','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (40,'Cambodia','Cambodian riel','KHR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (41,'Cameroon','Central African CFA franc','XAF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (42,'Canada','Canadian dollar','CAD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (43,'Caribbean Netherlands (Netherlands)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (44,'Cayman Islands (UK)','Cayman Islands dollar','KYD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (45,'Central African Republic','Central African CFA franc','XAF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (46,'Chad','Central African CFA franc','XAF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (47,'Chatham Islands (New Zealand)','New Zealand dollar','NZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (48,'Chile','Chilean peso','CLP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (49,'China','Chinese Yuan Renminbi','CNY','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (50,'Christmas Island (Australia)','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (51,'Cocos (Keeling) Islands (Australia)','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (52,'Colombia','Colombian peso','COP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (53,'Comoros','Comorian franc','KMF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (54,'Congo, Democratic Republic of the','Congolese franc','CDF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (55,'Congo, Republic of the','Central African CFA franc','XAF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (56,'Cook Islands (New Zealand)','Cook Islands dollar','---','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (57,'Costa Rica','Costa Rican colon','CRC','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (58,'Cote d''Ivoire','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (59,'Croatia','Croatian kuna','HRK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (60,'Cuba','Cuban peso','CUP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (61,'Curacao (Netherlands)','Netherlands Antillean guilder','ANG','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (62,'Cyprus','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (63,'Czechia','Czech koruna','CZK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (64,'Denmark','Danish krone','DKK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (65,'Djibouti','Djiboutian franc','DJF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (66,'Dominica','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (67,'Dominican Republic','Dominican peso','DOP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (68,'Ecuador','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (69,'Egypt','Egyptian pound','EGP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (70,'El Salvador','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (71,'Equatorial Guinea','Central African CFA franc','XAF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (72,'Eritrea','Eritrean nakfa','ERN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (73,'Estonia','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (74,'Eswatini (formerly Swaziland)','Swazi lilangeni','SZL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (75,'Ethiopia','Ethiopian birr','ETB','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (76,'Falkland Islands (UK)','Falkland Islands pound','FKP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (77,'Faroe Islands (Denmark)','Faroese krona','---','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (78,'Fiji','Fijian dollar','FJD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (79,'Finland','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (80,'France','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (81,'French Guiana (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (82,'French Polynesia (France)','CFP franc','XPF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (83,'Gabon','Central African CFA franc','XAF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (84,'Gambia','Gambian dalasi','GMD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (85,'Georgia','Georgian lari','GEL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (86,'Germany','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (87,'Ghana','Ghanaian cedi','GHS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (88,'Gibraltar (UK)','Gibraltar pound','GIP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (89,'Greece','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (90,'Greenland (Denmark)','Danish krone','DKK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (91,'Grenada','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (92,'Guadeloupe (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (93,'Guam (USA)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (94,'Guatemala','Guatemalan quetzal','GTQ','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (95,'Guernsey (UK)','Guernsey Pound','GGP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (96,'Guinea','Guinean franc','GNF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (97,'Guinea-Bissau','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (98,'Guyana','Guyanese dollar','GYD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (99,'Haiti','Haitian gourde','HTG','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (100,'Honduras','Honduran lempira','HNL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (101,'Hong Kong (China)','Hong Kong dollar','HKD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (102,'Hungary','Hungarian forint','HUF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (103,'Iceland','Icelandic krona','ISK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (104,'India','Indian rupee','INR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (105,'Indonesia','Indonesian rupiah','IDR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (106,'International Monetary Fund (IMF)','SDR (Special Drawing Right)','XDR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (107,'Iran','Iranian rial','IRR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (108,'Iraq','Iraqi dinar','IQD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (109,'Ireland','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (110,'Isle of Man (UK)','Manx pound','IMP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (111,'Israel','Israeli new shekel','ILS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (112,'Italy','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (113,'Jamaica','Jamaican dollar','JMD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (114,'Japan','Japanese yen','JPY','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (115,'Jersey (UK)','Jersey pound','JEP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (116,'Jordan','Jordanian dinar','JOD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (117,'Kazakhstan','Kazakhstani tenge','KZT','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (118,'Kenya','Kenyan shilling','KES','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (119,'Kiribati','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (120,'Kosovo','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (121,'Kuwait','Kuwaiti dinar','KWD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (122,'Kyrgyzstan','Kyrgyzstani som','KGS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (123,'Laos','Lao kip','LAK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (124,'Latvia','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (125,'Lebanon','Lebanese pound','LBP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (126,'Lesotho','Lesotho loti','LSL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (127,'Liberia','Liberian dollar','LRD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (128,'Libya','Libyan dinar','LYD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (129,'Liechtenstein','Swiss franc','CHF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (130,'Lithuania','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (131,'Luxembourg','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (132,'Macau (China)','Macanese pataca','MOP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (133,'Madagascar','Malagasy ariary','MGA','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (134,'Malawi','Malawian kwacha','MWK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (135,'Malaysia','Malaysian ringgit','MYR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (136,'Maldives','Maldivian rufiyaa','MVR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (137,'Mali','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (138,'Malta','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (139,'Marshall Islands','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (140,'Martinique (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (141,'Mauritania','Mauritanian ouguiya','MRU','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (142,'Mauritius','Mauritian rupee','MUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (143,'Mayotte (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (144,'Mexico','Mexican peso','MXN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (145,'Micronesia','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (146,'Moldova','Moldovan leu','MDL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (147,'Monaco','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (148,'Mongolia','Mongolian tugrik','MNT','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (149,'Montenegro','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (150,'Montserrat (UK)','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (151,'Morocco','Moroccan dirham','MAD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (152,'Mozambique','Mozambican metical','MZN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (153,'Myanmar (formerly Burma)','Myanmar kyat','MMK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (154,'Namibia','Namibian dollar','NAD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (155,'Nauru','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (156,'Nepal','Nepalese rupee','NPR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (157,'Netherlands','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (158,'New Caledonia (France)','CFP franc','XPF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (159,'New Zealand','New Zealand dollar','NZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (160,'Nicaragua','Nicaraguan cordoba','NIO','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (161,'Niger','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (162,'Nigeria','Nigerian naira','NGN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (163,'Niue (New Zealand)','New Zealand dollar','NZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (164,'Norfolk Island (Australia)','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (165,'Northern Mariana Islands (USA)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (166,'North Korea','North Korean won','KPW','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (167,'North Macedonia (formerly Macedonia)','Macedonian denar','MKD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (168,'Norway','Norwegian krone','NOK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (169,'Oman','Omani rial','OMR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (170,'Pakistan','Pakistani rupee','PKR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (171,'Palau','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (172,'Palestine','Israeli new shekel','ILS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (173,'Panama','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (174,'Papua New Guinea','Papua New Guinean kina','PGK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (175,'Paraguay','Paraguayan guarani','PYG','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (176,'Peru','Peruvian sol','PEN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (177,'Philippines','Philippine peso','PHP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (178,'Pitcairn Islands (UK)','New Zealand dollar','NZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (179,'Poland','Polish zloty','PLN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (180,'Portugal','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (181,'Puerto Rico (USA)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (182,'Qatar','Qatari riyal','QAR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (183,'Reunion (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (184,'Romania','Romanian leu','RON','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (185,'Russia','Russian ruble','RUB','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (186,'Rwanda','Rwandan franc','RWF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (187,'Saba (Netherlands)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (188,'Saint Barthelemy (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (189,'Saint Helena (UK)','Saint Helena pound','SHP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (190,'Saint Kitts and Nevis','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (191,'Saint Lucia','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (192,'Saint Martin (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (193,'Saint Pierre and Miquelon (France)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (194,'Saint Vincent and the Grenadines','East Caribbean dollar','XCD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (195,'Samoa','Samoan tala','WST','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (196,'San Marino','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (197,'Sao Tome and Principe','Sao Tome and Principe dobra','STN','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (198,'Saudi Arabia','Saudi Arabian riyal','SAR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (199,'Senegal','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (200,'Serbia','Serbian dinar','RSD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (201,'Seychelles','Seychellois rupee','SCR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (202,'Sierra Leone','Sierra Leonean leone','SLL','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (203,'Singapore','Singapore dollar','SGD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (204,'Sint Eustatius (Netherlands)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (205,'Sint Maarten (Netherlands)','Netherlands Antillean guilder','ANG','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (206,'Slovakia','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (207,'Slovenia','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (208,'Solomon Islands','Solomon Islands dollar','SBD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (209,'Somalia','Somali shilling','SOS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (210,'South Africa','South African rand','ZAR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (211,'South Georgia Island (UK)','Pound sterling','GBP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (212,'South Korea','South Korean won','KRW','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (213,'South Sudan','South Sudanese pound','SSP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (214,'Spain','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (215,'Sri Lanka','Sri Lankan rupee','LKR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (216,'Sudan','Sudanese pound','SDG','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (217,'Suriname','Surinamese dollar','SRD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (218,'Svalbard and Jan Mayen (Norway)','Norwegian krone','NOK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (219,'Sweden','Swedish krona','SEK','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (220,'Switzerland','Swiss franc','CHF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (221,'Syria','Syrian pound','SYP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (222,'Taiwan','New Taiwan dollar','TWD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (223,'Tajikistan','Tajikistani somoni','TJS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (224,'Tanzania','Tanzanian shilling','TZS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (225,'Thailand','Thai baht','THB','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (226,'Timor-Leste','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (227,'Togo','West African CFA franc','XOF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (228,'Tokelau (New Zealand)','New Zealand dollar','NZD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (229,'Tonga','Tongan pa’anga','TOP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (230,'Trinidad and Tobago','Trinidad and Tobago dollar','TTD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (231,'Tristan da Cunha (UK)','Pound sterling','GBP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (232,'Tunisia','Tunisian dinar','TND','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (233,'Turkey','Turkish lira','TRY','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (234,'Turkmenistan','Turkmen manat','TMT','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (235,'Turks and Caicos Islands (UK)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (236,'Tuvalu','Australian dollar','AUD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (237,'Uganda','Ugandan shilling','UGX','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (238,'Ukraine','Ukrainian hryvnia','UAH','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (239,'United Arab Emirates','UAE dirham','AED','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (240,'United Kingdom','Pound sterling','GBP','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (241,'United States of America','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (242,'Uruguay','Uruguayan peso','UYU','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (243,'US Virgin Islands (USA)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (244,'Uzbekistan','Uzbekistani som','UZS','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (245,'Vanuatu','Vanuatu vatu','VUV','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (246,'Vatican City (Holy See)','European euro','EUR','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (247,'Venezuela','Venezuelan bolivar','VES','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (248,'Vietnam','Vietnamese dong','VND','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (249,'Wake Island (USA)','United States dollar','USD','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (250,'Wallis and Futuna (France)','CFP franc','XPF','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (251,'Yemen','Yemeni rial','YER','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (252,'Zambia','Zambian kwacha','ZMW','en');
+INSERT INTO currency(id,country,currency,code,lang) VALUES (253,'Zimbabwe','United States dollar','USD','en');
+
 
