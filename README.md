@@ -48,9 +48,10 @@ DB_FINPORT: 3306                    - mysql Port
 DB_FINUSER:  finance_user           - mysql User created by db_finance.sql
 DB_FINDATABASE: finance             - Database created by db_finance.sql
 DB_FINPASSWORD: psw_finance_user    - UserPassword created by db_finance.sql
-TODAY: true/false
-        if true (DEFAULT) - if this value is true, index-fx-bankua.js will get only FX rates for Today
-        if false -  Get all historic rates
+PERIOD: Is not set/today/tomorrow
+        Is not set (BY DEFAULT)     - index-fx-bankua.js will get all historic rates
+        today                       - will get only FX rates for Today
+        tomorrow                    - will get only FX rates for Today
 ```
 
 ## Running `bankua`
@@ -63,14 +64,21 @@ To manually start `bankua` once it is installed:
 node index-fx-bankua.js 
 ```
 
-### Start the pm2 cron 
+### Start the pm2 cron for Today rates
 
 ```bash
-./pm2-bankua.sh
+./pm2-bankua-today.sh
 ```
-By default, cron runs every 6 hours. You can adjust it in  `pm2-bankua.sh` file.
+By default, cron runs every 1 hours. You can adjust it in  `pm2-bankua.sh` file.
  
-**Notice:** You must have installed pm2 process manager to run pm2-bankua.sh script. 
+**Notice:** You must have installed pm2 process manager to run pm2-bankua.sh script.
+
+### Start the pm2 cron for Tomorrow rates
+
+```bash
+./pm2-bankua-tomorrow.sh
+```
+ 
 
 ## Contact
 Denis Sunegin `dsunegin@gmail.com`

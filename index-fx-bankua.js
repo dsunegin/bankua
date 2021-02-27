@@ -13,7 +13,7 @@ const connectionFinance = mysql.createConnection({
 }).promise();
 
 
-let start = (process.env.TODAY=='true') ? new Date() : new Date(2020,0,1);
+let start = (process.env.PERIOD=='today' || process.env.PERIOD=='tomorrow' ) ? new Date() : new Date(2020,0,1);
 let end = new Date();       // Now
 
 (async () => {
@@ -21,8 +21,8 @@ let end = new Date();       // Now
         let fxyear= start.getFullYear();
         let fxmonth = (start.getMonth()+1).toString().padStart(2, "0");
         let fxdate =start.getDate().toString().padStart(2, "0");
-        //let urlParam = (process.env.TODAY=='true') ? '' : '&date=' + fxyear + fxmonth + fxdate;
-        let urlParam = '&date=' + fxyear + fxmonth + fxdate;
+        let urlParam = (process.env.PERIOD=='tomorrow') ? '' : '&date=' + fxyear + fxmonth + fxdate;
+        //let urlParam = '&date=' + fxyear + fxmonth + fxdate;
 
 
         let fxUrl =  'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json' + urlParam;
