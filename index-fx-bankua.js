@@ -21,7 +21,9 @@ let end = new Date();       // Now
         let fxyear= start.getFullYear();
         let fxmonth = (start.getMonth()+1).toString().padStart(2, "0");
         let fxdate =start.getDate().toString().padStart(2, "0");
-        let urlParam = (process.env.TODAY=='true') ? '' : '&date=' + fxyear + fxmonth + fxdate;
+        //let urlParam = (process.env.TODAY=='true') ? '' : '&date=' + fxyear + fxmonth + fxdate;
+        let urlParam = '&date=' + fxyear + fxmonth + fxdate;
+
 
         let fxUrl =  'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json' + urlParam;
         let dbDate;
@@ -49,7 +51,7 @@ let end = new Date();       // Now
                     await connectionFinance.query(sql)
                     .then(result => {
                         if (result[0].length > 0) return;
-                        const sql =" INSERT INTO bankua (code, exchangedate, rate ) VALUES (?,?,?)"
+                        const sql ="INSERT INTO bankua (code, exchangedate, rate ) VALUES (?,?,?)"
                         const fxitem = [fxcode, dbDate, item.rate];
                         let res = connectionFinance.query(sql, fxitem);
                         //console.log(result[0]);
