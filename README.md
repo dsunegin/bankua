@@ -48,8 +48,8 @@ DB_FINPORT: 3306                    - mysql Port
 DB_FINUSER:  finance_user           - mysql User created by db_finance.sql
 DB_FINDATABASE: finance             - Database created by db_finance.sql
 DB_FINPASSWORD: psw_finance_user    - UserPassword created by db_finance.sql
-PERIOD: Is not set/today/tomorrow
-        Is not set (BY DEFAULT)     - index-fx-bankua.js will get all historic rates
+PERIOD: undefined/today/tomorrow
+        undefined (BY DEFAULT)     - index-fx-bankua.js will get all historic rates
         today                       - will get only FX rates for Today
         tomorrow                    - will get only FX rates for Today
 ```
