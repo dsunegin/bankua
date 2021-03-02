@@ -17,8 +17,8 @@ rate float UNSIGNED
 
 CREATE TABLE currency(
 id       INTEGER  NOT NULL PRIMARY KEY,
-country  VARCHAR(36) NOT NULL,
-currency VARCHAR(39) NOT NULL,
+country  VARCHAR(100) NOT NULL,
+currency VARCHAR(100) NOT NULL,
 code     VARCHAR(3) NOT NULL,
 lang VARCHAR(2) NOT NULL
 );
