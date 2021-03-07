@@ -63,7 +63,6 @@ let end = new Date();       // Now
         })
         .catch(error => {
             console.log(error);
-            if (error.response.status == 404) page = false;
                 })
         console.log(dbDate);
         await wait(3000);            // Next Request Timeout in Loop of Historic Rates dataset
