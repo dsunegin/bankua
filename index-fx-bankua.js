@@ -21,11 +21,11 @@ let end = new Date();       // Now
         let fxyear= start.getFullYear();
         let fxmonth = (start.getMonth()+1).toString().padStart(2, "0");
         let fxdate =start.getDate().toString().padStart(2, "0");
-        let urlParam = (process.env.PERIOD=='tomorrow') ? '' : '&date=' + fxyear + fxmonth + fxdate;
+        let urlParam = (process.env.PERIOD=='tomorrow') ? '' : `&date=${fxyear}${fxmonth}${fxdate}`;
         //let urlParam = '&date=' + fxyear + fxmonth + fxdate;
 
 
-        let fxUrl =  'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json' + urlParam;
+        let fxUrl =  `https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json${urlParam}`;
         let dbDate;
         //const dbDate = fxyear + '-' + fxmonth + '-' + fxdate;
         await axios.get(fxUrl,{ headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' }, timeout: 30000  })
@@ -46,7 +46,7 @@ let end = new Date();       // Now
                     };
 
                     dbDate = YYYY + '-' + MM + '-' + DD;
-                    const sql ="SELECT * FROM bankua WHERE exchangedate='"+dbDate+"' AND code = '"+fxcode+ "'";
+                    const sql =`SELECT * FROM bankua WHERE exchangedate='${dbDate}' AND code = '${fxcode}'`;
 
                     await connectionFinance.query(sql)
                     .then(result => {
