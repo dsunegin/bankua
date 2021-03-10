@@ -6,7 +6,7 @@ grant all on finance.* to finance_user@localhost with grant option;
 use finance;
 
 CREATE TABLE bankua (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 code VARCHAR(7) NOT NULL,
 exchangedate DATE NOT NULL,
 rate float UNSIGNED
