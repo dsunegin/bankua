@@ -33,7 +33,7 @@ let end = new Date();       // Now
             let ResponseArr = response.data;
             for (let i = 0, item; item = ResponseArr[i]; ++i) {
                 (async () => {
-                    let fxcode = 'UAH/' + item.cc;
+                    let fxcode =  item.cc + '/UAH' ;
 
                     const regexDate = /(\d+)\.(\d+)\.(\d+)/;
                     let extrDate = regexDate.exec(item.exchangedate);
